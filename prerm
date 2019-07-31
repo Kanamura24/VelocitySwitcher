@@ -1,0 +1,4 @@
+﻿#!/bin/sh
+# prerm script
+sudo rm -rf /usr/share/openrtm-1.2/components/python/Controller/VelocitySwitcher
+

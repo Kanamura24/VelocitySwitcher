@@ -1,0 +1,54 @@
+# VelocitySwitcher CMake config file
+#
+# This file sets the following variables:
+# VelocitySwitcher_FOUND - Always TRUE.
+# VelocitySwitcher_INCLUDE_DIRS - Directories containing the VelocitySwitcher include files.
+# VelocitySwitcher_IDL_DIRS - Directories containing the VelocitySwitcher IDL files.
+# VelocitySwitcher_LIBRARIES - Libraries needed to use VelocitySwitcher.
+# VelocitySwitcher_DEFINITIONS - Compiler flags for VelocitySwitcher.
+# VelocitySwitcher_VERSION - The version of VelocitySwitcher found.
+# VelocitySwitcher_VERSION_MAJOR - The major version of VelocitySwitcher found.
+# VelocitySwitcher_VERSION_MINOR - The minor version of VelocitySwitcher found.
+# VelocitySwitcher_VERSION_REVISION - The revision version of VelocitySwitcher found.
+# VelocitySwitcher_VERSION_CANDIDATE - The candidate version of VelocitySwitcher found.
+
+message(STATUS "Found VelocitySwitcher-@PROJECT_VERSION@")
+set(VelocitySwitcher_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(VelocitySwitcher_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(VelocitySwitcher_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(VelocitySwitcher_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(VelocitySwitcher_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(VelocitySwitcher_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(VelocitySwitcher_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(VelocitySwitcher_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(VelocitySwitcher_VERSION @PROJECT_VERSION@)
+set(VelocitySwitcher_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(VelocitySwitcher_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(VelocitySwitcher_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(VelocitySwitcher_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

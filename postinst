@@ -1,0 +1,5 @@
+﻿#!/bin/sh
+# postinst script
+set -e
+cd /usr/share/openrtm-1.2/components/python/Controller/VelocitySwitcher
+sh idlcompile.sh

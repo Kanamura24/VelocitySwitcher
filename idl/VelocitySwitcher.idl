@@ -1,0 +1,16 @@
+
+
+module KanamuraRobotics {
+
+  interface VelocitySwitcherService {
+
+    // returns state (true when on) 
+    boolean getSwitch();
+
+    // if negative return, failed.
+    long setSwitch(in boolean flag);
+
+  };
+
+
+};
